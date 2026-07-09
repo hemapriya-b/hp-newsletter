@@ -1414,8 +1414,6 @@ const articles = [
   },
 ];
 
-// Export for use in Node.js environments (e.g. testing), while still
-// remaining a plain global `articles` array when loaded via <script> in browsers.
 if (typeof module !== "undefined" && module.exports) {
-  module.exports = articles;
+  module.exports = { articles };
 }

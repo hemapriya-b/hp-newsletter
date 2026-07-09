@@ -1,0 +1,26 @@
+{
+  "name": "hp-newsletter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "test": "find backend -name '*.js' -print0 | xargs -0 -n1 node --check && for file in frontend/js/*.js; do node --check --input-type=module < \"$file\"; done"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hemapriya-b/hp-newsletter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/hemapriya-b/hp-newsletter/issues"
+  },
+  "homepage": "https://github.com/hemapriya-b/hp-newsletter#readme",
+  "dependencies": {
+    "express": "^5.2.1",
+    "firebase-admin": "^11.11.1"
+  }
+}
