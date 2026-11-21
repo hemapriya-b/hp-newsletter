@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category - HP Newsletter</title>
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary bg-dark border-bottom border-body"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">
+          <img src="assets/images/logo.png" alt="Logo" width="90" height="90" />
+        </a>
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+              >
+                Category
+              </a>
+
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="category.html?category=global">
+                    Global
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="category.html?category=national"
+                  >
+                    National
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="category.html?category=sports">
+                    Sports
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="category.html?category=business"
+                  >
+                    Business
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    class="dropdown-item"
+                    href="category.html?category=politics"
+                  >
+                    Politics
+                  </a>
+                </li>
+
+                <li>
+                  <a class="dropdown-item" href="category.html?category=drama">
+                    Drama
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+
+          <form id="searchForm" class="d-flex me-3">
+            <input
+              id="searchInput"
+              class="form-control me-2"
+              type="search"
+              placeholder="Search articles..."
+            />
+
+            <button class="btn btn-primary">Search</button>
+          </form>
+          <button
+            id="themeToggle"
+            class="btn btn-outline-secondary ms-2"
+            type="button"
+            aria-label="Toggle theme"
+          >
+            <i class="bi bi-moon-fill"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <section class="container mt-4">
+      <form
+        id="newsFilters"
+        class="row g-3 align-items-end rounded border bg-body-tertiary p-3"
+      >
+        <div class="col-sm-5 col-md-4">
+          <label class="form-label" for="sortOrder">Sort news</label>
+          <select class="form-select" id="sortOrder">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+          </select>
+        </div>
+
+        <div class="col-sm-5 col-md-4">
+          <label class="form-label" for="filterDate">Choose a date</label>
+          <input class="form-control" type="date" id="filterDate" />
+        </div>
+
+        <div class="col-sm-2 col-md-4 d-flex gap-2">
+          <button class="btn btn-primary" type="submit">Apply date</button>
+          <button
+            class="btn btn-outline-secondary"
+            id="clearFilters"
+            type="button"
+          >
+            Clear
+          </button>
+        </div>
+      </form>
+      <p id="filterMessage" class="mt-3 mb-0 text-muted" aria-live="polite"></p>
+    </section>
+
+    <section id="search-section" class="container my-5" style="display: none">
+      <h2 class="mb-4">Search Results</h2>
+      <div class="row g-3" id="search-results"></div>
+    </section>
+
+    <main class="container py-5">
+      <!-- Heading -->
+
+      <div class="text-center mb-5">
+        <div class="text-center mb-5">
+          <h1 id="categoryTitle" class="display-4 fw-bold"></h1>
+          <p class="lead text-secondary">
+            Browse the latest news from this category.
+          </p>
+        </div>
+
+        <div class="row g-4" id="categoryArticles"></div>
+      </div>
+      <div class="row g-4" id="categoryArticles"></div>
+    </main>
+
+    <!-- ARTICLE MODAL -->
+    <div id="articleModal" class="modal-overlay">
+      <div class="modal-card">
+        <span id="closeModal" class="close-btn">&times;</span>
+
+        <img id="modalImage" src="" alt="Article Image" />
+
+        <div class="mt-3">
+          <span id="modalCategory" class="badge bg-primary"></span>
+
+          <h2 id="modalTitle" class="mt-3"></h2>
+
+          <div class="text-secondary small mb-3">
+            <span id="modalAuthor"></span> • <span id="modalDate"></span> •
+            <span id="modalReadTime"></span>
+          </div>
+
+          <p id="modalExcerpt" class="lead"></p>
+
+          <div class="text-center my-4">
+            <button
+              id="readMoreBtn"
+              class="btn btn-outline-primary rounded-pill px-4"
+            >
+              Continue Reading ↓
+            </button>
+          </div>
+
+          <div id="fullArticle">
+            <hr />
+
+            <div id="modalContent"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <footer class="text-muted text-center py-4 mt-5">
+      <div class="container">
+        <h5>HP Newsletter</h5>
+        <p class="mb-1">Stay informed. Stay updated.</p>
+        <small> © 2026 HP Newsletter. All Rights Reserved. </small>
+      </div>
+    </footer>
+    <script src="Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/darkmodetoggle.js"></script>
+    <script type="module" src="js/category.js"></script>
+  </body>
+</html>
